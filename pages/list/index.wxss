@@ -1,0 +1,36 @@
+page{
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.main-container{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.view-head{
+  height: 180rpx;
+  display:flex;
+  flex-direction:row;
+}
+
+.view-head-col{
+  flex: 1;
+  box-shadow: -5px -5px 5px #FFA500 inset;
+}
+
+.view-body{
+  display: flex;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.text-font{
+  color: #FFA500;
+  font-style: oblique;
+  font-weight: bold;
+  line-height: 80rpx;
+}

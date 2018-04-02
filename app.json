@@ -1,12 +1,39 @@
 {
   "pages":[
-    "pages/index/index",
-    "pages/logs/logs"
+    "pages/list/index",
+    "pages/add/index",
+    "pages/statistics/index"
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarBackgroundColor": "#FFA500",
+    "navigationBarTitleText": "KEEP-ACCOUNT",
     "navigationBarTextStyle":"black"
+  },
+  "tabBar":{
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#FFA500",
+    "list": [
+      {
+        "pagePath": "pages/list/index",
+        "iconPath": "image/first_tab.png",
+        "selectedIconPath": "image/first_tab_HL.png",
+        "text": "账单"
+      },
+      {
+        "pagePath": "pages/add/index",
+        "iconPath": "image/scend_tab.png",
+        "selectedIconPath": "image/scend_tab_HL.png",
+        "text": "记一笔"
+      },
+      {
+        "pagePath": "pages/statistics/index",
+        "iconPath": "image/third_tab.png",
+        "selectedIconPath": "image/third_tab_HL.png",
+        "text": "统计"
+      }
+    ]
   }
 }

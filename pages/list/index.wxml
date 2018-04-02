@@ -1,0 +1,58 @@
+<view class='main-container'>
+  <view class='view-head text-font'>
+    <view class='view-head-col picker'>
+      <picker mode="date" value="{{currentdate}}" start="1978-01" end="" bindchange="bindDateChange" fields="month">  
+      <text >日期:\n</text>
+      <text style='color:black;'>{{currentdate}} </text>
+    </picker>  
+    </view>
+    <view class='view-head-col'>
+      <text >收入:\n</text>
+      <text style='color:black;'>{{shouru}}</text>
+      <text> 元</text>
+    </view>
+    <view class='view-head-col'>
+      <text>支出:\n</text>
+      <text style='color:black;'>{{zhichu}}</text>
+      <text> 元</text>
+    </view>
+  </view>
+  <view class='view-body' >
+    <scroll-view class='view-body-scroll' scroll-y bindscrolltolower="lower">
+      <text>1
+      2
+      3
+      4
+      5
+      
+      8
+      8
+      9
+      9
+      
+      
+      9
+      8
+      6
+      
+      5
+      4
+      32
+      2
+      1
+      1
+      1
+      2
+      2
+      3
+      3
+      4
+      4
+      5
+      
+      </text>
+      </scroll-view>
+  
+  </view>
+  
+</view>
