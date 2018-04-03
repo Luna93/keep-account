@@ -19,39 +19,27 @@
   </view>
   <view class='view-body' >
     <scroll-view class='view-body-scroll' scroll-y bindscrolltolower="lower">
-      <text>1
-      2
-      3
-      4
-      5
-      
-      8
-      8
-      9
-      9
-      
-      
-      9
-      8
-      6
-      
-      5
-      4
-      32
-      2
-      1
-      1
-      1
-      2
-      2
-      3
-      3
-      4
-      4
-      5
-      
-      </text>
-      </scroll-view>
+    <view class='index-bd'>
+      <block wx:for-items="{{list}}" wx:key="{{item.id}}">
+        <view class="kind-list-item">
+          <view id="{{item.id}}" class="kind-list-item-hd {{item.open ? 'kind-list-item-hd-show' : ''}}" bindtap="kindToggle">
+            <view class="kind-list-text">{{item.name}}</view>
+            <!-- <image class="kind-list-img" src="resources/kind/{{item.id}}.png"></image> -->
+          </view>
+          <view class="kind-list-item-bd {{item.open ? 'kind-list-item-bd-show' : ''}}">
+            <view class="navigator-box {{item.open ? 'navigator-box-show' : ''}}">
+              <block wx:for-items="{{item.pages}}" wx:for-item="page" wx:key="*item">
+                <navigator url="pages/{{page}}/{{page}}" class="navigator">
+                  <view class="navigator-text">{{page}}</view>
+                  <view class="navigator-arrow"></view>
+                </navigator>
+              </block>
+            </view>
+          </view>
+        </view>
+      </block>
+      </view>
+    </scroll-view>
   
   </view>
   
