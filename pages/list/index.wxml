@@ -7,14 +7,12 @@
     </picker>  
     </view>
     <view class='view-head-col'>
-      <text >收入:\n</text>
+      <text >当月总收入:(元)\n</text>
       <text style='color:black;'>{{shouru}}</text>
-      <text> 元</text>
     </view>
     <view class='view-head-col'>
-      <text>支出:\n</text>
+      <text>当月总支出:(元)\n</text>
       <text style='color:black;'>{{zhichu}}</text>
-      <text> 元</text>
     </view>
   </view>
   <view class='view-body' >
@@ -24,7 +22,8 @@
         <view class="kind-list-item">
           <view id="{{item.id}}" class="kind-list-item-hd {{item.open ? 'kind-list-item-hd-show' : ''}}" bindtap="kindToggle">
             <view class="kind-list-text">{{item.name}}</view>
-            <!-- <image class="kind-list-img" src="resources/kind/{{item.id}}.png"></image> -->
+            <view class="kind-list-text">支出:</view>
+            <view class="kind-list-text">收入:</view>
           </view>
           <view class="kind-list-item-bd {{item.open ? 'kind-list-item-bd-show' : ''}}">
             <view class="navigator-box {{item.open ? 'navigator-box-show' : ''}}">

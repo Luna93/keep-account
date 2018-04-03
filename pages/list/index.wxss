@@ -33,6 +33,7 @@ page{
   font-style: oblique;
   font-weight: bold;
   line-height: 80rpx;
+  font-size: 85%
 }
 
 .index-hd {
@@ -55,7 +56,6 @@ page{
   color: #888888;
   font-size: 28rpx;
 }
-
 
 .navigator-box {
   opacity: 0;
@@ -124,6 +124,7 @@ page{
 }
 .kind-list-text{
   flex: 1;
+  font-size: 70%;
 }
 .kind-list-img {
   width: 60rpx;
@@ -133,8 +134,8 @@ page{
   padding: 30rpx;
   display: flex;
   align-items: center;
-
   transition: opacity .3s;
+  background-color: #FFD39B;
 }
 .kind-list-item-hd-show {
   opacity: .2;

@@ -1,31 +1,23 @@
-var order = ['red', 'yellow', 'blue', 'green', 'red']
 Page({
   data: {
-    toView: 'red',
-    scrollTop: 100
+    array: ['中国', '美国', '巴西', '日本'],
+    index: 1,
+    date: '2016-09-01'
   },
-  upper: function (e) {
-    console.log(e)
-  },
-  lower: function (e) {
-    console.log(e)
-  },
-  scroll: function (e) {
-    console.log(e)
-  },
-  tap: function (e) {
-    for (var i = 0; i < order.length; ++i) {
-      if (order[i] === this.data.toView) {
-        this.setData({
-          toView: order[i + 1]
-        })
-        break
-      }
-    }
-  },
-  tapMove: function (e) {
+  bindPickerChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      scrollTop: this.data.scrollTop + 10
+      index: e.detail.value
+    })
+  },
+  bindDateChange: function (e) {
+    this.setData({
+      date: e.detail.value
+    })
+  },
+  bindTimeChange: function (e) {
+    this.setData({
+      time: e.detail.value
     })
   }
 })
