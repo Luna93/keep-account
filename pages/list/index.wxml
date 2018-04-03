@@ -2,7 +2,7 @@
   <view class='view-head text-font'>
     <view class='view-head-col picker'>
       <picker mode="date" value="{{currentdate}}" start="1978-01" end="" bindchange="bindDateChange" fields="month">  
-      <text >日期:\n</text>
+      <text >请选择日期:\n</text>
       <text style='color:black;'>{{currentdate}} </text>
     </picker>  
     </view>
