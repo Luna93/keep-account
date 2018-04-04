@@ -151,3 +151,9 @@ page{
 .index-bd {
   padding: 0 30rpx 40rpx;
 }
+
+.reload-font { 
+  display: flex;  
+  flex-direction: row;  
+  justify-content: center;
+}
