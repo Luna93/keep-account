@@ -1,66 +1,50 @@
 <view class="container">
   <view class="page-body">
-    <form catchsubmit="formSubmit" catchreset="formReset">
-      <view class="">
-        <radio-group name="radio">
-          <label>
-            <radio value="radio1" checked='true' />支出</label>
-          <label>
-            <radio value="radio2" />收入</label>
-        </radio-group>
+    <form bindsubmit='formSubmit' bindreset="formReset">
+      <view class="search-cell">
+      <view class="weui-cell__ft">
+        <button class="btn-search" type="primary" disabled>搜索</button>
       </view>
+      <view class="weui-cell__bd">
+        <input class="input-search" placeholder=""  value="{{inputVal}}"/>
+      </view>
+    </view>
 
-      <view class="page-section">
-        <view class="weui-cells__title">金额:</view>
-        <view class="weui-cells weui-cells_after-title">
-          <view class="weui-cell weui-cell_input">
-            <input class="weui-input" type="digit"auto-focus placeholder="带小数点的数字键盘" />
-          </view>
-        </view>
+    <view class="search-cell">
+      <view class="weui-cell__ft">
+        <button class="btn-search" type="primary" disabled>搜索</button>
       </view>
+      <view class="weui-cell__bd">
+        <input class="input-search" placeholder=""  value="{{inputVal}}"/>
+      </view>
+    </view>
 
-      <view class="weui-cells__title">类别:</view>
-      <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_input">
-          <view class="weui-cell__hd">
-            <view class="weui-label">当前选择</view>
-          </view>
-          <view class="weui-cell__bd">
-            <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-              <view class="weui-input">{{array[index]}}</view>
-            </picker>
-          </view>
-        </view>
+    <view class="search-cell">
+      <view class="weui-cell__ft">
+        <button class="btn-search" type="primary" disabled>搜索</button>
       </view>
+      <view class="weui-cell__bd">
+        <input class="input-search" placeholder=""  value="{{inputVal}}"/>
+      </view>
+    </view>
 
-      <view class="weui-cells__title">日期选择器</view>
-      <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_input">
-          <view class="weui-cell__hd">
-            <view class="weui-label">当前选择</view>
-          </view>
-          <view class="weui-cell__bd">
-            <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
-              <view class="weui-input">{{date}}</view>
-            </picker>
-          </view>
-        </view>
+    <view class="search-cell">
+      <view class="weui-cell__ft">
+        <button class="btn-search" type="primary" disabled>搜索</button>
       </view>
-      <view class="page-section">
-        <view class="page-section-title">备注</view>
-        <view class="weui-cells weui-cells_after-title">
-          <view class="weui-cell weui-cell_input">
-            <view class="weui-cell__bd">
-              <input class="weui-input" name="input" placeholder="这是一个输入框" />
-            </view>
-          </view>
-        </view>
+      <view class="weui-cell__bd">
+        <input class="input-search" placeholder=""  value="{{inputVal}}"/>
       </view>
+    </view>
 
-      <view class="btn-area">
-        <button type="primary" formType="submit">确定</button>
-        <button formType="reset">重置</button>
+    <view class="search-cell">
+      <view class="weui-cell__ft">
+        <button class="btn-search" type="primary" disabled>搜索</button>
       </view>
+      <view class="weui-cell__bd">
+        <input class="input-search" placeholder=""  value="{{inputVal}}"/>
+      </view>
+    </view>
     </form>
   </view>
 </view>
