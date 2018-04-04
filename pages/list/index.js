@@ -88,7 +88,7 @@ Page({
     var self = this;
     var pageIndex = self.data.currentPage;
     wx.request({
-      url: 'https://route.showapi.com/582-2',
+      url: '',
       data: {
         showapi_appid: '19297',
         showapi_sign: 'cf606a68a01f45d196b0061a1046b5b3',
