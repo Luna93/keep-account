@@ -14,42 +14,42 @@ Page({
         id: '29',
         name: '29号',
         open: false,
-        pages: ['text', 'icon', 'progress']
+        pages: ['1', '2', '2', '2', '2']
       }, {
         id: '28',
         name: '28号',
         open: false,
-        pages: ['button', 'checkbox', 'form', 'input', 'label', 'picker', 'radio', 'slider', 'switch', 'textarea']
+        pages: ['1', '2', '2', '2', '2']
       }, {
         id: '27',
         name: '27号',
         open: false,
-        pages: ['navigator']
+        pages: ['1', '2', '2', '2', '2']
       }, {
         id: '26',
         name: '26号',
         open: false,
-        pages: ['image', 'audio', 'video']
+        pages: ['1', '2', '2', '2']
       }, {
         id: '25',
         name: '25号',
-        pages: ['map']
+        pages: ['1', '2', '2', '2', '2']
       }, {
         id: '24',
         name: '24号',
-        pages: ['canvas']
+        pages: ['1', '2', '2']
       }, {
         id: '23',
         name: '23号',
-        pages: ['canvas']
+        pages: ['1', '2', '2', '2', '2']
       }, {
         id: '22',
         name: '22号',
-        pages: ['canvas']
+        pages: ['1', '2', '2', '2', '2']
       }, {
         id: '21',
         name: '21号',
-        pages: ['canvas']
+        pages: ['1', '2', '2', '2', '2']
       }
     ]
   },

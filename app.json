@@ -1,7 +1,8 @@
 {
   "pages":[
-    "pages/add/index",
     "pages/list/index",
+    "pages/add/index",
+    
     
     "pages/statistics/index"
   ],

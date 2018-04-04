@@ -24,3 +24,9 @@
   -webkit-align-items: center;
   align-items: center;
 }
+
+label {
+  display: inline-block;
+  min-width: 270rpx;
+  margin-right: 20rpx;
+}
