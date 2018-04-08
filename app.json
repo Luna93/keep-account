@@ -1,9 +1,7 @@
 {
   "pages":[
-    "pages/list/index",
     "pages/add/index",
-    
-    
+    "pages/list/index",
     "pages/statistics/index"
   ],
   "window":{

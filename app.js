@@ -10,6 +10,28 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        wx.getUserInfo({
+          withCredentials: true,
+          success: res => {
+            this.globalData.userInfo = res.userInfo      
+          }
+        })
+        if (res.code) {
+          wx.request({
+            url: '127.0.0.1/test',
+            data : {
+              code : res.code
+            },
+            success: res => {
+              console.log(res);
+              wx.setStorageSync('openId', res.data.openId)
+
+            }
+          })
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+        
       }
     })
     // 获取用户信息

@@ -87,40 +87,40 @@ Page({
   getData: function () {
     var self = this;
     var pageIndex = self.data.currentPage;
-    wx.request({
-      url: '',
-      data: {
-        showapi_appid: '19297',
-        showapi_sign: 'cf606a68a01f45d196b0061a1046b5b3',
-        page: pageIndex
-      },
-      success: function (res) {
-        var dataModel = res.data;
-        if (dataModel.showapi_res_code == 0) {
-          if (dataModel.showapi_res_body.ret_code == 0) {
-            if (pageIndex == 1) { // 下拉刷新
-              self.setData({
-                allPages: dataModel.showapi_res_body.pagebean.allPages,
-                contentlist: dataModel.showapi_res_body.pagebean.contentlist,
-                hideHeader: true
-              })
-            } else { // 加载更多
-              console.log('加载更多');
-              var tempArray = self.data.contentlist;
-              tempArray = tempArray.concat(dataModel.showapi_res_body.pagebean.contentlist);
-              self.setData({
-                allPages: dataModel.showapi_res_body.pagebean.allPages,
-                contentlist: tempArray,
-                hideBottom: true
-              })
-            }
-          }
-        }
-      },
-      fail: function () {
+    // wx.request({
+      // url: '',
+      // data: {
+      //   showapi_appid: '19297',
+      //   showapi_sign: 'cf606a68a01f45d196b0061a1046b5b3',
+      //   page: pageIndex
+      // },
+      // success: function (res) {
+      //   var dataModel = res.data;
+      //   if (dataModel.showapi_res_code == 0) {
+      //     if (dataModel.showapi_res_body.ret_code == 0) {
+      //       if (pageIndex == 1) { // 下拉刷新
+      //         self.setData({
+      //           allPages: dataModel.showapi_res_body.pagebean.allPages,
+      //           contentlist: dataModel.showapi_res_body.pagebean.contentlist,
+      //           hideHeader: true
+      //         })
+      //       } else { // 加载更多
+      //         console.log('加载更多');
+      //         var tempArray = self.data.contentlist;
+      //         tempArray = tempArray.concat(dataModel.showapi_res_body.pagebean.contentlist);
+      //         self.setData({
+      //           allPages: dataModel.showapi_res_body.pagebean.allPages,
+      //           contentlist: tempArray,
+      //           hideBottom: true
+      //         })
+      //       }
+      //     }
+      //   }
+      // },
+      // fail: function () {
 
-      }
-    })
+      // }
+    // })
   }
 
 
