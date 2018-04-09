@@ -5,7 +5,7 @@ Page({
     zhichu: "0.00",
     shouru: "0.00",
     currentdate: util.formatTime3(new Date()),
-    hideHeader: true,
+    //hideHeader: true,
     hideBottom: true,
     list: [],
     refreshTime: '', // 刷新的时间 
@@ -73,13 +73,17 @@ Page({
   // 下拉刷新
   refresh: function (e) {
     var self = this;
+    wx.showToast({
+      title: 'loading...',
+      icon: 'loading'
+    })
     setTimeout(function () {
       console.log('下拉刷新');
       var date = new Date();
       self.setData({
         currentPage: 1,
         refreshTime: date.toLocaleTimeString(),
-        hideHeader: false
+        //hideHeader: false
       })
       self.getData();
     }, 300);

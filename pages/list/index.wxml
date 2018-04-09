@@ -15,12 +15,15 @@
       <text style='color:black;'>{{zhichu}}</text>
     </view>
   </view>
-  <view class="reload-font" hidden="{{hideHeader}}">
+  <!-- <view class="reload-font" hidden="{{hideHeader}}">
     <view>下拉刷新中……</view>
     <view>{{refreshTime}}</view>
-  </view>
+  </view> -->
   <view class='view-body'>
-    <scroll-view class='view-body-scroll' scroll-y bindscrolltoupper="refresh" bindscrolltolower="loadMore">
+    <scroll-view class='view-body-scroll' scroll-y bindscrolltoupper="refresh" bindscrolltolower="loadMore" >
+      <view class="page-body-info">
+        <text class="page-body-text">下滑页面即可刷新</text>
+      </view>
       <view class='index-bd'>
         <block wx:for-items="{{list}}" wx:key="{{item.id}}">
           <view class="kind-list-item">

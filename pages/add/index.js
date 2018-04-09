@@ -104,7 +104,6 @@ Page({
     var reg = /(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/;
    
     if (!reg.test(amount)) {
-      console.log('1')
       this.setData({
         amountVal: '',
         amountPlace: '金额格式错误!'
