@@ -1,9 +1,10 @@
+var util = require('../../utils/util.js');
 Page({
   data: {
     text: "第一页",
     zhichu: "0.00",
     shouru: "0.00",
-    currentdate: "2018-04",
+    currentdate: util.formatTime3(new Date()),
     hideHeader: true,
     hideBottom: true,
     list: [],
