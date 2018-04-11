@@ -1,17 +1,18 @@
 var util = require('../../utils/util.js');
+var userId = wx.getStorageSync('userId');
 Page({
   data: {
     text: "第一页",
     zhichu: "0.00",
     shouru: "0.00",
     currentdate: util.formatTime3(new Date()),
-    //hideHeader: true,
+    hideHeader: true,
     hideBottom: true,
     list: [],
     refreshTime: '', // 刷新的时间 
-    allPages: '',    // 总页数
-    currentPage: 1,  // 当前页数  默认是1
-    loadMoreData: '加载更多……'
+    //allPages: '',    // 总页数
+    //currentPage: 1,  // 当前页数  默认是1
+    //loadMoreData: '加载更多……'
 
   },
 
@@ -24,8 +25,9 @@ Page({
       refreshTime: date.toLocaleTimeString()
     })
     this.getData();
+    
   },
-  loadMore: function(e) {
+  loadMore: function (e) {
     console.log(e);
     console.log('到底了要加载');
   },
@@ -36,10 +38,24 @@ Page({
       currentdate: e.detail.value
     })
   },
+  onPullDownRefresh: function () {
+    this.setData({
+      hideHeader: false
+    })
+    wx.showToast({
+      title: 'loading...',
+      icon: 'loading'
+    })
+    this.getData();
+    this.setData({
+      hideHeader: true
+    })
+  },
   kindToggle: function (e) {
+    console.log('e==',e);
     var id = e.currentTarget.id, list = this.data.list;
     for (var i = 0, len = list.length; i < len; ++i) {
-      if (list[i].id == id) {
+      if (list[i].selectDay == id) {
         list[i].open = !list[i].open
       } else {
         list[i].open = false
@@ -49,83 +65,89 @@ Page({
       list: list
     });
   },
-  // 上拉加载更多
-  loadMore: function () {
-    var self = this;
-    // 当前页是最后一页
-    if (self.data.currentPage == self.data.allPages) {
-      self.setData({
-        loadMoreData: '已经到顶'
-      })
-      return;
-    }
-    setTimeout(function () {
-      console.log('上拉加载更多');
-      var tempCurrentPage = self.data.currentPage;
-      tempCurrentPage = tempCurrentPage + 1;
-      self.setData({
-        currentPage: tempCurrentPage,
-        hideBottom: false
-      })
-      self.getData();
-    }, 300);
-  },
-  // 下拉刷新
-  refresh: function (e) {
-    var self = this;
-    wx.showToast({
-      title: 'loading...',
-      icon: 'loading'
-    })
-    setTimeout(function () {
-      console.log('下拉刷新');
-      var date = new Date();
-      self.setData({
-        currentPage: 1,
-        refreshTime: date.toLocaleTimeString(),
-        //hideHeader: false
-      })
-      self.getData();
-    }, 300);
-  },
   // 获取数据  pageIndex：页码参数
   getData: function () {
     var self = this;
-    var pageIndex = self.data.currentPage;
-    // wx.request({
-      // url: '',
-      // data: {
-      //   showapi_appid: '19297',
-      //   showapi_sign: 'cf606a68a01f45d196b0061a1046b5b3',
-      //   page: pageIndex
-      // },
-      // success: function (res) {
-      //   var dataModel = res.data;
-      //   if (dataModel.showapi_res_code == 0) {
-      //     if (dataModel.showapi_res_body.ret_code == 0) {
-      //       if (pageIndex == 1) { // 下拉刷新
-      //         self.setData({
-      //           allPages: dataModel.showapi_res_body.pagebean.allPages,
-      //           contentlist: dataModel.showapi_res_body.pagebean.contentlist,
-      //           hideHeader: true
-      //         })
-      //       } else { // 加载更多
-      //         console.log('加载更多');
-      //         var tempArray = self.data.contentlist;
-      //         tempArray = tempArray.concat(dataModel.showapi_res_body.pagebean.contentlist);
-      //         self.setData({
-      //           allPages: dataModel.showapi_res_body.pagebean.allPages,
-      //           contentlist: tempArray,
-      //           hideBottom: true
-      //         })
-      //       }
-      //     }
-      //   }
-      // },
-      // fail: function () {
+    console.log(wx.getStorageSync('userId'));
+    console.log(userId);
+    if(userId==''){
+      wx.showModal({
+        title: '',
+        content: '用户未登录或授权，可删除小程序重新进入',
+        confirmText: '确定',
+        confirmColor: "#FD5E02",
+        showCancel: false
+      })
+      return;
+    }
+    wx.request({
+      url: 'http://weixin.frp2.chuantou.org/account/list',
+      method: 'GET',
+      data: {
+        userId: userId,
+        selectDay: self.data.currentdate
+      },
+      success: function (res) {
+        if (res.statusCode != 200) {
+          wx.showModal({
+            title: '',
+            content: '404网络异常',
+            confirmText: '确定',
+            confirmColor: "#FD5E02",
+            showCancel: false
+          })
+          return;
+        }
 
-      // }
-    // })
+        if (res.data.code == 200) {
+          console.log('res.data.data=',res.data.data);
+          var dataModel = res.data.data;
+          self.setData({
+            zhichu: dataModel.monthTotalExpend,
+            shouru: dataModel.monthTotalIncome,
+            list: dataModel.monthList
+          })
+
+        } else {
+          wx.showModal({
+            title: '',
+            content: res.data.msg,
+            confirmText: '确定',
+            confirmColor: "#FD5E02",
+            showCancel: false
+          })
+        }
+        // if (dataModel.showapi_res_code == 0) {
+        //   if (dataModel.showapi_res_body.ret_code == 0) {
+        //     if (pageIndex == 1) { // 下拉刷新
+        //       self.setData({
+        //         allPages: dataModel.showapi_res_body.pagebean.allPages,
+        //         contentlist: dataModel.showapi_res_body.pagebean.contentlist,
+        //         hideHeader: true
+        //       })
+        //     } else { // 加载更多
+        //       console.log('加载更多');
+        //       var tempArray = self.data.contentlist;
+        //       tempArray = tempArray.concat(dataModel.showapi_res_body.pagebean.contentlist);
+        //       self.setData({
+        //         allPages: dataModel.showapi_res_body.pagebean.allPages,
+        //         contentlist: tempArray,
+        //         hideBottom: true
+        //       })
+        //     }
+        //   }
+        // }
+      },
+      fail: function () {
+        wx.showModal({
+          title: '',
+          content: '网络异常',
+          confirmText: '确定',
+          confirmColor: "#FD5E02",
+          showCancel: false
+        })
+      }
+    })
   }
 
 

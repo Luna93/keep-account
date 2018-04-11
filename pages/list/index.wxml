@@ -1,4 +1,7 @@
 <view class='main-container'>
+  <view class="page-body-info" hidden="{{hideHeader}}">
+    <text class="page-body-text">下滑页面即可刷新</text>
+  </view>
   <view class='view-head text-font'>
     <view class='view-head-col picker'>
       <picker mode="date" value="{{currentdate}}" start="1978-01" end="" bindchange="bindDateChange" fields="month">
@@ -17,27 +20,26 @@
   </view>
   <!-- <view class="reload-font" hidden="{{hideHeader}}">
     <view>下拉刷新中……</view>
-    <view>{{refreshTime}}</view>
   </view> -->
   <view class='view-body'>
-    <scroll-view class='view-body-scroll' scroll-y bindscrolltoupper="refresh" bindscrolltolower="loadMore" >
-      <view class="page-body-info">
-        <text class="page-body-text">下滑页面即可刷新</text>
-      </view>
+    <scroll-view class='view-body-scroll' scroll-y>
+
       <view class='index-bd'>
-        <block wx:for-items="{{list}}" wx:key="{{item.id}}">
+        <block wx:for-items="{{list}}" wx:key="{{index}}">
           <view class="kind-list-item">
-            <view id="{{item.id}}" class="kind-list-item-hd {{item.open ? 'kind-list-item-hd-show' : ''}}" bindtap="kindToggle">
-              <view class="kind-list-text">{{item.name}}</view>
-              <view class="kind-list-text">支出:</view>
-              <view class="kind-list-text">收入:</view>
+            <view id="{{item.selectDay}}" class="kind-list-item-hd {{item.open ? 'kind-list-item-hd-show' : ''}}" bindtap="kindToggle">
+              <view class="kind-list-text">{{item.selectDay}}日 {{item.selectWeek}}</view>
+              <view class="kind-list-text">支出:{{item.dayTotalExpend}}</view>
+              <view class="kind-list-text">收入:{{item.dayTotalIncome}}</view>
+              <view class="navigator-arrow"></view>
             </view>
             <view class="kind-list-item-bd {{item.open ? 'kind-list-item-bd-show' : ''}}">
               <view class="navigator-box {{item.open ? 'navigator-box-show' : ''}}">
-                <block wx:for-items="{{item.pages}}" wx:for-item="page" wx:key="*item">
-                  <navigator url="pages/{{page}}/{{page}}" class="navigator">
-                    <view class="navigator-text">{{page}}</view>
-                    <view class="navigator-arrow"></view>
+                <block wx:for-items="{{item.dayList}}" wx:for-item="page" wx:key="*item">
+                  <navigator url="pages/{{index}}/{{index}}" class="navigator">
+                    <view class="navigator-text">{{page.subTypeName}}</view>
+                    <view class="navigator-text" wx:if="{{page.type==2}}">-{{page.amount}}</view>
+                    <view class="navigator-text" wx:if="{{page.type==1}}">{{page.amount}}</view>
                   </navigator>
                 </block>
               </view>
@@ -47,8 +49,7 @@
       </view>
     </scroll-view>
   </view>
-  <view class="reload-font" hidden="{{hideBottom}}">
-    <view>{{loadMoreData}}</view>
-    <view>{{refreshTime}}</view>
+  <view class="page-body-info">
+    <text class="page-body-text">我是有底线的</text>
   </view>
 </view>
