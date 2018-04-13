@@ -1,5 +1,7 @@
 var util = require('../../utils/util.js');
-var userId = wx.getStorageSync('userId');
+// var userId = wx.getStorageSync('userId');
+var app = getApp()
+
 Page({
   data: {
     text: "第一页",
@@ -27,6 +29,15 @@ Page({
     this.getData();
     
   },
+  onShow: function () {
+    var date = new Date();
+    console.log('date=', date.toLocaleTimeString());
+    this.setData({
+      currentdate: util.formatTime3(new Date())
+    })
+    this.getData();
+    this.data.list[0].open = true;
+  },
   loadMore: function (e) {
     console.log(e);
     console.log('到底了要加载');
@@ -37,6 +48,7 @@ Page({
     this.setData({
       currentdate: e.detail.value
     })
+    this.getData();
   },
   onPullDownRefresh: function () {
     this.setData({
@@ -68,6 +80,8 @@ Page({
   // 获取数据  pageIndex：页码参数
   getData: function () {
     var self = this;
+    var userId = app.globalData.userId;
+    console.log("list app.globalData.userId=" + userId);
     if(userId==''){
       wx.showModal({
         title: '',
