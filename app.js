@@ -89,7 +89,7 @@ App({
 
 function toLogin(jsCode, encryptedData, iv, _this) {
   wx.request({
-    url: 'http://weixin.frp2.chuantou.org/login/miniapp-login',
+    url: 'http://47.98.144.103/login/miniapp-login',
     method: 'POST',
     header: {
       'content-type': 'application/json' // 默认值

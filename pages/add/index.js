@@ -133,7 +133,7 @@ function resetfun(_this){
 }
 function toSave(atype, amount, remark, subType, subTypeName, accountTime, userId, _this) {
   wx.request({
-    url: 'http://weixin.frp2.chuantou.org/account/save',
+    url: 'http://47.98.144.103/account/save',
     method: 'POST',
     header: {
       'content-type': 'application/json' // 默认值

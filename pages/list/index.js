@@ -68,8 +68,6 @@ Page({
   // 获取数据  pageIndex：页码参数
   getData: function () {
     var self = this;
-    console.log(wx.getStorageSync('userId'));
-    console.log(userId);
     if(userId==''){
       wx.showModal({
         title: '',
@@ -81,7 +79,7 @@ Page({
       return;
     }
     wx.request({
-      url: 'http://weixin.frp2.chuantou.org/account/list',
+      url: 'http://47.98.144.103/account/list',
       method: 'GET',
       data: {
         userId: userId,
